@@ -10,7 +10,6 @@ import {
 import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
-import { reportLovableError } from "../lib/lovable-error-reporting";
 import { PageTransition } from "@/components/motion/PageTransition";
 import { SmoothScroll } from "@/components/motion/SmoothScroll";
 import { CursorFollower } from "@/components/motion/CursorFollower";
@@ -42,9 +41,6 @@ function NotFoundComponent() {
 function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   console.error(error);
   const router = useRouter();
-  useEffect(() => {
-    reportLovableError(error, { boundary: "tanstack_root_error_component" });
-  }, [error]);
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
@@ -91,8 +87,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "Finprov — Master Finance. Accelerate Your Global Career." },
       { name: "twitter:description", content: "Industry-validated finance programs with SAP, Tally & Power BI training. 100% placement assistance for freshers and working professionals." },
-      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/591d0734-9d3c-4d05-8672-6e60656cf807/id-preview-48cf8af7--1bfe35fd-7cb4-4996-bb9b-5af1a81a71e4.lovable.app-1784207304675.png" },
-      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/591d0734-9d3c-4d05-8672-6e60656cf807/id-preview-48cf8af7--1bfe35fd-7cb4-4996-bb9b-5af1a81a71e4.lovable.app-1784207304675.png" },
+      { property: "og:image", content: "/assets/finprov-wordmark.jpeg" },
+      { name: "twitter:image", content: "/assets/finprov-wordmark.jpeg" },
     ],
     links: [
       {
